@@ -84,4 +84,7 @@ As it does not provide any deployment descriptor, tests are skipped.
 2. Install the requirements  
 `pip install -r requirements.txt`
 3. Running the testsuite  
-`pytest -s -vvv --platform docker tests/`
+```
+. venv/bin/activate
+pytest -s -vvv --platform docker tests/
+```
