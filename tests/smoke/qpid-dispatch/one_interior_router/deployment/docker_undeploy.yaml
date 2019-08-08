@@ -1,0 +1,13 @@
+---
+# tasks to undeploy one_interior_router in containers 
+- hosts: localhost
+  vars:
+    ansible_connection: local
+  tasks:
+    - name: Removing containers
+      docker_container:
+        name: "{{ item }}"
+        state: absent
+      with_items:
+        - one_interior_router.Router.I1
+        - one_interior_router.cli-java

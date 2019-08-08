@@ -1,0 +1,25 @@
+---
+# tasks to deploy one_interior_router in containers
+- hosts: localhost
+  tasks:
+    - name: Start one_interior_router.Router.I1
+      docker_container:
+        name: one_interior_router.Router.I1
+        image: "{{ qdrouterd_image }}"
+        command: "qdrouterd -c /var/lib/qdrouterd/qdrouterd.conf"
+        state: started
+        recreate: yes
+        published_ports: 6001:6001
+        volumes:
+          - "{{ playbook_dir }}/files:/var/lib/qdrouterd:Z"
+
+- hosts: localhost
+  tasks:
+    - name: Deploy client java - one_interior_router.cli-java
+      docker_container:
+        name: one_interior_router.cli-java
+        image: rhmessagingqe/cli-java
+        state: started
+        recreate: yes
+        command: "sh"
+        interactive: yes

@@ -1,0 +1,24 @@
+# Inventory file that describes containers topology
+all:
+  vars:
+    qdrouterd_image: "quay.io/interconnectedcloud/qdrouterd"
+  children:
+    routers:
+      hosts:
+        one_interior_router.Router.I1:
+          ansible_connection: docker
+          # variables currently needed by iqa (doc is available)
+          component: router
+          router_port: 6001
+          router_config: /var/lib/qdrouterd/qdrouterd.conf
+          implementation: dispatch
+          executor: docker
+    clients:
+      hosts:
+        one_interior_router.cli-java:
+          implementation: java
+          ansible_user: cli-java
+      vars:
+        component: client
+        executor: docker
+        ansible_connection: docker
