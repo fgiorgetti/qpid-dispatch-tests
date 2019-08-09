@@ -7,7 +7,8 @@ all:
       hosts:
         one_interior_router.Router.I1:
           ansible_connection: docker
-          # variables currently needed by iqa (doc is available)
+          # variables currently needed by iqa
+          # see: https://github.com/rh-messaging-qe/pytest_iqa/blob/devel/pytest_iqa/README.md
           component: router
           router_port: 6001
           router_config: /var/lib/qdrouterd/qdrouterd.conf
