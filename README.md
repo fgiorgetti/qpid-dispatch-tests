@@ -82,9 +82,11 @@ As it does not provide any deployment descriptor, tests are skipped.
 1. Create a virtual environment (needs python3.6+)  
 `virtualenv -p python3.6 venv`
 2. Install the requirements  
-`pip install -r requirements.txt`
-3. Running the testsuite  
 ```
 . venv/bin/activate
+pip install -r requirements.txt
+```
+3. Running the testsuite (still within the virtualenv)
+```
 pytest -s -vvv --platform docker tests/
 ```
